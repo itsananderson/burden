@@ -1,14 +1,14 @@
 {
-  "name": "burden.io",
-  "version": "0.0.0",
-  "description": "0.0.1",
+  "name": "burden",
+  "version": "0.0.1",
+  "description": "A worry-free, static blog generator",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/itsananderson/burden.io.git"
+    "url": "git://github.com/itsananderson/burden.git"
   },
   "keywords": [
     "blogging",
@@ -19,7 +19,7 @@
   "author": "Will Anderson",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/itsananderson/burden.io/issues"
+    "url": "https://github.com/itsananderson/burden/issues"
   },
-  "homepage": "https://github.com/itsananderson/burden.io"
+  "homepage": "https://github.com/itsananderson/burden"
 }
