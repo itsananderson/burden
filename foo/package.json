@@ -1,0 +1,42 @@
+{
+  "name": "burden",
+  "description": "A burden-free static blog generator",
+  "version": "0.1.0",
+  "homepage": "https://github.com/itsananderson/burden",
+  "author": {
+    "name": "Will Anderson",
+    "email": "will@itsananderson.com",
+    "url": "http://willi.am/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/itsananderson/burden.git"
+  },
+  "bugs": {
+    "url": "https://github.com/itsananderson/burden/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/itsananderson/burden/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt": "~0.4.4"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.4"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
