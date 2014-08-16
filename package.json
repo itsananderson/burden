@@ -22,9 +22,14 @@
   "homepage": "https://github.com/itsananderson/burden",
   "dependencies": {
     "lodash": "^2.4.1",
-    "supermarked": "^1.1.0"
+    "marked": "^0.3.2",
+    "highlight.js": "^8.1.0",
+    "jshint": "^2.5.3",
+    "gulp-jshint": "^1.8.4"
   },
   "devDependencies": {
-    "mocha": "^1.21.4"
+    "mocha": "^1.21.4",
+    "gulp-mocha": "^1.0.0",
+    "gulp": "^3.8.7"
   }
 }

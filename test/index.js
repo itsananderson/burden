@@ -9,8 +9,15 @@ describe('Burden', function() {
     });
 
     it('converts', function(done) {
-        burden().convert(path.join(__dirname + '/files/simple.md'), function(err, result) {
-            assert.equal('<p>hello world</p>\n', result);
+        burden().convertFile(path.join(__dirname + '/files/simple.md'), function(err, result) {
+            assert.equal('<h1 id="hello-world">hello world</h1>\n', result);
+            done();
+        });
+    });
+
+    it('converts code', function(done) {
+        burden().convertFile(path.join(__dirname + '/files/code.md'), function(err, result) {
+            assert.equal('<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> foo\n</code></pre>\n', result);
             done();
         });
     });
