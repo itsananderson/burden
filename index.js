@@ -7,9 +7,7 @@ function Burden(options) {
     this.options = _.defaults(this.defaultOptions, options);
 }
 
-Burden.prototype.defaultOptions = {
-
-};
+Burden.prototype.defaultOptions = {};
 
 Burden.prototype.convertFile = convertFile;
 Burden.prototype.convertString = convertString;
