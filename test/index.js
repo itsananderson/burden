@@ -21,4 +21,8 @@ describe('Burden', function() {
             done();
         });
     });
+
+    it('lists posts', function() {
+        assert.deepEqual([{slug: 'test', meta: {test1: 'foo', test2: 'bar'}}], burden().getPosts());
+    });
 });
