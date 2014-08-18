@@ -23,6 +23,19 @@ describe('Burden', function() {
     });
 
     it('lists posts', function() {
-        assert.deepEqual([{slug: 'test', meta: {test1: 'foo', test2: 'bar'}}], burden().getPosts());
+        var expectedFile = '0000-00-00-test.md';
+        assert.deepEqual({
+            slug: 'test',
+            fileName: expectedFile,
+            filePath: path.join(process.cwd(), 'source', '_posts', expectedFile),
+            contents: 'this is more',
+            meta: {
+                test1: 'foo',
+                test2: 'bar'
+            }}, burden().getPosts()[0]);
+    });
+
+    it('generates', function(done) {
+        burden().generate(done);
     });
 });

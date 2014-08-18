@@ -6,7 +6,7 @@ var getPosts = require('./lib/get-posts');
 
 function Burden(options) {
     this.options = _.defaults(this.defaultOptions, options);
-    this.themes['default'] = require('./themes/default')(this);
+    this.themes.default = require('./themes/default')(this);
 
     this.theme = this.options.theme ? this.themes[this.options.theme] : this.themes.default;
 }
@@ -21,8 +21,8 @@ Burden.prototype.convertFile = convertFile;
 Burden.prototype.convertString = convertString;
 Burden.prototype.getPosts = getPosts;
 
-Burden.generate = function() {
-    this.theme.generate();
+Burden.prototype.generate = function(cb) {
+    this.theme.generate(cb);
 };
 
 module.exports = function(options) {
