@@ -24,18 +24,18 @@ describe('Burden', function() {
 
     it('lists posts', function() {
         var expectedFile = '0000-00-00-test.md';
-        assert.deepEqual({
-            slug: 'test',
-            fileName: expectedFile,
-            filePath: path.join(process.cwd(), 'source', '_posts', expectedFile),
-            contents: 'this is more',
-            meta: {
-                test1: 'foo',
-                test2: 'bar'
-            }}, burden().getPosts()[0]);
+        var post = burden().getPosts()[0];
+        assert.equal(post.slug, 'test');
+        assert.equal(post.fileName, expectedFile);
+        assert.equal(post.filePath, path.join(process.cwd(), 'source', '_posts', expectedFile));
+        assert.deepEqual(post.meta, {
+            title: 'Test Post',
+            test1: 'foo',
+            test2: 'bar'
+        });
     });
 
     it('generates', function(done) {
-        burden().generate(done);
+        burden().generate({title: 'Will Anderson'}, done);
     });
 });

@@ -1,0 +1,14 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='http://willi.am/stylesheets/screen.css')
+    body
+        header#header.inner
+            h1
+                a(href='/')= blog.title
+            nav#main-nav
+                ul#main
+                    li: a(href='/plugins') Plugins
+        #content.inner
+            block content

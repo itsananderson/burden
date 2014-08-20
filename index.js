@@ -21,8 +21,8 @@ Burden.prototype.convertFile = convertFile;
 Burden.prototype.convertString = convertString;
 Burden.prototype.getPosts = getPosts;
 
-Burden.prototype.generate = function(cb) {
-    this.theme.generate(cb);
+Burden.prototype.generate = function(blog, cb) {
+    this.theme.generate(blog, cb);
 };
 
 module.exports = function(options) {

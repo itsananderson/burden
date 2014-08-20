@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    article.post
+        h2.title= title
+        .entry-content
+            != postBody
+        .meta
+            .date
+                time(datetime=postDate, pubdate, data-updated="true")= postDateDisplay
+            .tags
+                - for (var i = 0; i < tags.length; i++)
+                    a.category(href=tags[i].url)= tags[i].name
