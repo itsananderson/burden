@@ -15,7 +15,7 @@ BurdenDefault.prototype.generate = function(blog, cb) {
     var self = this;
     var postFn = jade.compileFile(path.join(__dirname, 'templates', 'post.jade'), {pretty: true});
     self.burden.getPosts().forEach(function(post) {
-        var date = moment(post.meta.date);
+        var date = post.meta.date ? moment(new Date(post.meta.date)) : moment();
         var fd = fs.openSync(path.join(self.postDir, post.slug + '.html'), 'w');
         self.burden.convertString(post.contents, function(err, converted) {
             if (err) {
@@ -36,9 +36,9 @@ BurdenDefault.prototype.generate = function(blog, cb) {
                 ]
             }));
             fs.closeSync(fd);
-            cb(null, converted);
         });
     });
+    cb(null);
 };
 
 module.exports = BurdenDefault;
