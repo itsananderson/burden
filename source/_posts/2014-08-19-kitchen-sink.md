@@ -27,5 +27,5 @@ stream.on('data', function(data) {
 Yay!
 ---
 
-That's about it for now.
+That's about it for now.  
 More to come.
