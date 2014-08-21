@@ -15,32 +15,41 @@ function BurdenDefault(burden) {
 BurdenDefault.prototype.generate = function(blog, cb) {
     var self = this;
     var postFn = jade.compileFile(path.join(__dirname, 'templates', 'post.jade'), {pretty: true});
-    self.burden.getPosts().forEach(function(post) {
+    var posts = self.burden.getPosts();
+    var postsLeft = posts.length;
+    posts.forEach(function(post) {
         var date = post.meta.date ? moment(new Date(post.meta.date)) : moment();
         mkdirp.sync(path.join(self.postDir, post.slug));
         var fd = fs.openSync(path.join(self.postDir, post.slug, 'index.html'), 'w');
         self.burden.convertString(post.contents, function(err, converted) {
             if (err) {
-                return cb(err);
+                return console.error(err);
             }
 
             fs.writeSync(fd, postFn({
                 postBody: converted,
                 blog: blog,
-                title: post.meta.title,
-                postDate: date.toString(),
-                postDateDisplay: date.format('MMM Do, YYYY'),
-                tags: [
-                    {
-                        url: '/blog/categories/gulp',
-                        name: 'Gulp'
-                    }
-                ]
+                post: {
+                    title: post.meta.title,
+                    body: converted,
+                    date: date.toString(),
+                    displayDate: date.format('MMM Do, YYYY'),
+                    tags: [
+                        {
+                            url: '/blog/categories/gulp',
+                            name: 'Gulp'
+                        }
+                    ],
+                    meta: post.meta
+                }
             }));
             fs.closeSync(fd);
+            postsLeft -= 1;
+            if (!postsLeft) {
+                cb(null);
+            }
         });
     });
-    cb(null);
 };
 
 module.exports = BurdenDefault;

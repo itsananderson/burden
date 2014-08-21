@@ -2,12 +2,12 @@ extends layout
 
 block content
     article.post
-        h2.title= title
+        h2.title= post.title
         .entry-content
-            != postBody
+            != post.body
         .meta
             .date
-                time(datetime=postDate, pubdate, data-updated="true")= postDateDisplay
+                time(datetime=post.date, pubdate, data-updated="true")= post.displayDate
             .tags
-                - for (var i = 0; i < tags.length; i++)
-                    a.category(href=tags[i].url)= tags[i].name
+                - for (var i = 0; i < post.tags.length; i++)
+                    a.category(href=post.tags[i].url)= post.tags[i].name
