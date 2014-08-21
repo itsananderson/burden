@@ -27,7 +27,7 @@ BurdenDefault.prototype.generate = function(blog, cb) {
             }
 
             fs.writeSync(fd, postFn({
-                postBody: converted,
+                title: post.meta.title,
                 blog: blog,
                 post: {
                     title: post.meta.title,
