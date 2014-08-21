@@ -3,6 +3,7 @@ var path = require('path');
 var fs = require('fs');
 var jade = require('jade');
 var moment = require('moment');
+var mkdirp = require('mkdirp');
 
 function BurdenDefault(burden) {
     if (!this) return new BurdenDefault(burden);
@@ -16,7 +17,8 @@ BurdenDefault.prototype.generate = function(blog, cb) {
     var postFn = jade.compileFile(path.join(__dirname, 'templates', 'post.jade'), {pretty: true});
     self.burden.getPosts().forEach(function(post) {
         var date = post.meta.date ? moment(new Date(post.meta.date)) : moment();
-        var fd = fs.openSync(path.join(self.postDir, post.slug + '.html'), 'w');
+        mkdirp.sync(path.join(self.postDir, post.slug));
+        var fd = fs.openSync(path.join(self.postDir, post.slug, 'index.html'), 'w');
         self.burden.convertString(post.contents, function(err, converted) {
             if (err) {
                 return cb(err);
